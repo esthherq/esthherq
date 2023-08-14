@@ -1,29 +1,29 @@
 from random import *
 
-print('Привет! Я —  числовая угадайка.')
+print('Привет! Я —  числовая угадайка.')
 
 digit = randint(1, 101)
 digit_user = int(input('Введи число от 1 до 100: '))
 
 def is_valid(num):
-  if num.isdigit():
-    num = int(num)
-    if 1 <= num <= 100:
-      return True
-    else:
-      return False
-  else:
-    return False
+  if num.isdigit():
+    num = int(num)
+    if 1 <= num <= 100:
+      return True
+    else:
+      return False
+  else:
+    return False
 
 while True:
-  if digit_user > digit:
-    print('Слишком много, попробуй число меньше.')
-    digit_user = int(input())
-  elif digit_user < digit:
-    print('Слишком мало, попробуй число побольше.')
-    digit_user = int(input())
-  else:
-    print('Поздравляю, загаданное число действительно равно', digit_user, end = '!')
-    print()
-    print('Спасибо, что играли в числовую угадайку. Еще увидимся...')
-    break
+  if digit_user > digit:
+    print('Слишком много, попробуй число меньше.')
+    digit_user = int(input())
+  elif digit_user < digit:
+    print('Слишком мало, попробуй число побольше.')
+    digit_user = int(input())
+  else:
+    print('Поздравляю, загаданное число действительно равно', digit_user, end = '!')
+    print()
+    print('Спасибо, что сыграли в числовую угадайку.')
+    break
