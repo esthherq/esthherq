@@ -1,0 +1,37 @@
+import random
+
+
+digits = '0123456789'
+lowercase_letters = 'abcdefghijklmnopqrstuvwxyz'
+uppercase_letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+punctuation = '!#$%&*+-=?@^_'
+chars = ''
+
+amount = int(input('Сколько паролей ты хочешь сгенерировать? '))
+length = int(input('Из скольки символов будет состоять пароль? '))
+digits = input('Включить ли цифры в пароль? Ответ Да/Нет: ').lower()
+propis = input('Включить ли прописные буквы в пароль? Ответ Да/Нет: ').lower()
+stroch = input('Включить ли строчные буквы в пароль? Ответ Да/Нет: ').lower()
+simvol = input('Включить ли символы в пароль? Ответ Да/Нет: ').lower()
+strann = input('Исключить ли неоднозначные символы il1Lo0O? Ответ Да/Нет: ').lower()
+
+if digits == 'да':
+  chars += digits
+if propis == 'да':
+  chars += uppercase_letters
+if stroch == 'да':
+  chars += lowercase_letters
+if simvol == 'да':
+  chars += punctuation
+if strann == 'да':
+  for c in 'il1Lo0O': 
+    chars = chars.replace(c, '')
+
+def generate_password(length, chars):
+  password = ''
+  for i in range(length):
+    password += random.choice(chars)
+  return password
+
+for j in range(amount):
+    print(f'Сгенерированный пароль = {generate_password(length, chars)}')
