@@ -1,0 +1,53 @@
+lower_alphabet = ''
+upper_alphabet = ''
+
+def is_valid_language(language):
+    return language == 'ru' or language == 'en'
+
+def is_valid_direction(direction):
+    return direction == '+' or direction == '-'
+
+print('Добро пожаловать в программу шифрования/дешифрования Шифра Цезаря!')
+
+language = input('Для начала выберите язык шифрования: русский или английский (русский - "ru" или английский - "en"): ')
+if not is_valid_language(language):
+    while not is_valid_language(language):
+        language = input('Пожалуйста, введите корректный язык шифрования. (русский - "ru" или английский - "en"): ')
+
+direction = input('Отлично! Теперь, выберите направление: шифрование или дешифрование (шифрование - "+" или дешифрование - "-"): ')
+if not is_valid_direction(direction):
+    while not is_valid_direction(direction):
+        direction = input('Пожалуйста, введите корректное направление шифрования. (шифрование - "+" или дешифрование - "-"): ')
+
+step = int(input('Введите шаг шифрования: '))
+
+text = input('И, наконец, введите сам текст: ')
+
+print('Отлично! А теперь, немного магии...')
+
+if direction == '+':
+    step = step
+else:
+    step = -1 * step
+
+if language == 'ru':
+    lower_alphabet = "абвгдежзийклмнопрстуфхцчшщъыьэюя"
+    upper_alphabet = "АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ"
+    alphas = 32
+else:
+    lower_alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    upper_alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    alphas = 26
+
+for i in range(len(text)):
+    if text[i].isalpha():
+        if text[i] in lower_alphabet:
+            index_i = lower_alphabet.find(text[i])
+            index = (index_i + step) % alphas
+            print(lower_alphabet[index], end='')
+        if text[i] in upper_alphabet:
+            index_i = upper_alphabet.find(text[i])
+            index = (index_i + step) % alphas
+            print(upper_alphabet[index], end='')
+    else:
+        print(text[i], end='')
